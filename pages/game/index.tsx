@@ -174,9 +174,6 @@ export default function Game() {
         </div>
       </Modal>
       <div className={styles.header}>
-        <Link href="/">
-          <a>back</a>
-        </Link>
         <h1>Gordle</h1>
       </div>
       <Guesses
