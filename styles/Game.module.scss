@@ -1,0 +1,20 @@
+@import "./base.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 4rem;
+  background-color: $back;
+  height: 100vh;
+
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: hsl(174deg 100% 38%);
+    margin: 0;
+    padding: 0;
+  }
+}

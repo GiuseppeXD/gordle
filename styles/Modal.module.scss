@@ -1,0 +1,35 @@
+@import "./base.scss";
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: $blue;
+  padding: 8px;
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .option {
+      display: flex;
+      align-items: center;
+      text-transform: capitalize;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+  }
+
+  .finish {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    grid-gap: 8px;
+    font-weight: 700;
+    color: $green;
+  }
+}

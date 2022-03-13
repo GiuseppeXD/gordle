@@ -1,0 +1,30 @@
+@import "./base.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 4px;
+
+  .row {
+    display: flex;
+    gap: 4px;
+
+    .letter {
+      height: 50px;
+      width: 70px;
+      background-color: $blue;
+      color: white;
+
+      &.correct {
+        background-color: $green;
+      }
+
+      &.incorrect {
+        background-color: $red;
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+@import "./base.scss";
+
+.container {
+  display: grid;
+  gap: 1rem;
+  padding: 0 10rem;
+}
+
+.word {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  .letter {
+    display: flex;
+    height: 80px;
+    width: 80px;
+    border: 4px solid $blue;
+    border-radius: 20%;
+    background-color: $ciano;
+    justify-content: center;
+    font-weight: 600;
+    align-items: center;
+    font-size: 2rem;
+    line-height: 2rem;
+    text-transform: uppercase;
+
+    &.correct {
+      background-color: $green;
+    }
+
+    &.incorrect {
+      background-color: $red;
+    }
+
+    &.has-letter {
+      background-color: $yellow;
+    }
+  }
+}
