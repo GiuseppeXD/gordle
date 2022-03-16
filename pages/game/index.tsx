@@ -88,15 +88,19 @@ export default function Game() {
   }
 
   const getGuessItemStatus = (guess: string, letter: string, position: number): string => {
+
     if (word.includes(letter.toLowerCase())) {
+
       if (letter.toLowerCase() == word[position].toLowerCase()) {
         return 'correct'; // removeByIndex(guess, position).indexOf(letter)
       } else if (guess.indexOf(letter) == position) {
         let pos = guess.slice(position + 1).indexOf(letter);
-        if (!pos) {
+
+        if (pos==-1) {
           return 'has-letter';
+          
         }
-        if (letter.toLowerCase() != word[pos + 1].toLowerCase()) {
+        if (letter.toLowerCase() != word[pos + position + 1].toLowerCase()) {
           return 'has-letter';
         }
       }
