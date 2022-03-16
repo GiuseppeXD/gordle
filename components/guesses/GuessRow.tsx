@@ -6,7 +6,7 @@ type Props = {
   guess: string,
   isRevealing?: boolean,
   isCompleted?: boolean,
-  getGuessItemStatus?: (guess: string, letter: string) => string,
+  getGuessItemStatus?: (guess: string, letter: string, position: number) => string,
 }
 
 const defaultFunc = (_) => {
@@ -24,7 +24,7 @@ export default function GuessRow({ guess, isRevealing, isCompleted, getGuessItem
           position={index + 1}
           isRevealing={isRevealing}
           isCompleted={isCompleted}
-          status={getGuessItemStatus(guess, letter)}
+          status={getGuessItemStatus(guess, letter, index)}
         />
       ))}
     </div>

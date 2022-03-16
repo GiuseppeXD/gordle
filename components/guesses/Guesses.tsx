@@ -7,7 +7,7 @@ type Props = {
   guesses: string[],
   currentGuess: string,
   isRevealing?: boolean,
-  getGuessItemStatus: (guess: string, letter: string) => string,
+  getGuessItemStatus: (guess: string, letter: string, position: number) => string,
 }
 
 export default function Guesses({ guesses, currentGuess, isRevealing, getGuessItemStatus }: Props) {

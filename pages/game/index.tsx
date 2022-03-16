@@ -20,6 +20,7 @@ const customStyles = {
     left: '50%',
     right: 'auto',
     bottom: 'auto',
+    borderRadius: '10%',
     marginRight: '-50%',
     padding: 0,
     transform: 'translate(-50%, -50%)',
@@ -36,11 +37,11 @@ export default function Game() {
   const [isGameLost, setIsGameLost] = useState(false);
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [isGameFinished, setIsGameFinished] = useState(false);
+  const [showFinalModal, setShowFinalModal] = useState(false);
   const [isRevealing, setIsRevealing] = useState(false);
   const [guesses, setGuesses] = useState([]);
 
   useEffect(() => {
-    console.log(words.length);
     if (words.length > 0) {
       setCurrentWord(words[Math.floor(Math.random() * words.length)]);
     }
@@ -63,8 +64,6 @@ export default function Game() {
     setIsGameFinished(false);
     setGuesses([]);
     setCurrentGuess('');
-    console.log('Started');
-    console.log(word)
   }, [word])
 
   useEffect(() => {
@@ -74,6 +73,7 @@ export default function Game() {
     if (guesses.length == MAX_CHALLENGES) {
       setIsGameLost(true);
       setIsGameFinished(true);
+      setShowFinalModal(true);
     }
   }, [guesses])
   
@@ -87,12 +87,18 @@ export default function Game() {
     return 'none';
   }
 
-  const getGuessItemStatus = (guess: string, letter: string): string => {
+  const getGuessItemStatus = (guess: string, letter: string, position: number): string => {
     if (word.includes(letter.toLowerCase())) {
-      if (guess.indexOf(letter) == word.indexOf(letter.toLowerCase())) {
-        return 'correct';
-      } else {
-        return 'has-letter';
+      if (letter.toLowerCase() == word[position].toLowerCase()) {
+        return 'correct'; // removeByIndex(guess, position).indexOf(letter)
+      } else if (guess.indexOf(letter) == position) {
+        let pos = guess.slice(position + 1).indexOf(letter);
+        if (!pos) {
+          return 'has-letter';
+        }
+        if (letter.toLowerCase() != word[pos + 1].toLowerCase()) {
+          return 'has-letter';
+        }
       }
     }
     return 'incorrect';
@@ -140,6 +146,7 @@ export default function Game() {
           setCurrentGuess('');
           setIsGameWon(true);
           setIsGameFinished(true);
+          setShowFinalModal(true);
           return;
         }
   
@@ -158,6 +165,7 @@ export default function Game() {
         style={customStyles}
         selectLanguage={selectLanguage}
         contentLabel="Select a language"
+        ariaHideApp={false}
       >
         <div className={modalStyles.content}>
           <h2>Select a language to play</h2>
@@ -190,9 +198,11 @@ export default function Game() {
         getKeyStatus={getKeyStatus}
       />
       <Modal
-        isOpen={isGameFinished}
+        isOpen={showFinalModal}
         style={customStyles}
         contentLabel="Finished"
+        onRequestClose={() => setShowFinalModal(false)}
+        ariaHideApp={false}
       >
         <div className={modalStyles.content}>
           <h2>{ isGameWon ? selectedLanguage == 'english' ? 'Congratulations!' : 'Parabens!' : selectedLanguage == 'english' ? 'Defeated!' : 'Perdedor!'}</h2>
