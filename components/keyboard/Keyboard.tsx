@@ -65,9 +65,9 @@ export default function Keyboard({ onChar, onDelete, onEnter, isRevealing, getKe
             isRevealing={isRevealing}
           />
         ))}
-      </div>
-      <div className={styles.row}>
         <Key value="DELETE" onClick={onClick} />
+      </div>
+      <div className={`${styles.row} ${styles.last}`}>
         {['Z', 'X', 'C', 'V', 'B', 'N', 'M'].map((key) => (
           <Key
             value={key}

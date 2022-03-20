@@ -5,18 +5,45 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem 0;
+  padding: 1rem 4px   ;
   gap: 4px;
 
   .row {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
     gap: 4px;
+    width: 60%;
+
+    @include for-tablet-landscape-up {
+      width: 40%;
+    }
+
+    @include for-phone-only {
+      width: auto;
+    }
+
+    &.last {
+      grid-template-columns: repeat(8, 1fr);
+      width: 55%;
+
+      @include for-tablet-landscape-up {
+        width: 35%;
+      }
+
+      @include for-phone-only {
+        width: auto;
+      }
+    }
 
     .letter {
-      height: 50px;
-      width: 70px;
+      aspect-ratio: 2/1;
       background-color: $blue;
       color: white;
+      font-size: 1.5rem;
+
+      img {
+        min-height: 16px;
+      }
 
       &.correct {
         background-color: $green;

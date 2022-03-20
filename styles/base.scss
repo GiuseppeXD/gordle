@@ -5,3 +5,23 @@ $ciano: rgba(0, 255, 255, 0.72);
 $yellow: rgba(255, 255, 0, 0.72);
 $green: rgba(0, 255, 0, 0.72);
 $red: rgba(255, 0, 0, 0.72);
+
+@mixin for-phone-only {
+	@media (max-width: 599px) { @content; }
+}
+
+@mixin for-tablet-portrait-up {
+	@media (min-width: 600px) { @content; }
+}
+
+@mixin for-tablet-landscape-up {
+	@media (min-width: 900px) { @content; }
+}
+
+@mixin for-desktop-up {
+	@media (min-width: 1200px) { @content; }
+}
+
+@mixin for-big-desktop-up {
+	@media (min-width: 1800px) { @content; }
+}

@@ -27,7 +27,7 @@ const customStyles = {
   },
 };
 
-export default function Game() { 
+export default function Game() {
   const [selectLanguageModalIsOpen, setSelectLanguageModalIsOpen] = useState(true);
   const [selectedLanguage, setSelectedLanguage] = useState('');
   const [words, setCurrentWords] = useState([]);
@@ -76,7 +76,7 @@ export default function Game() {
       setShowFinalModal(true);
     }
   }, [guesses])
-  
+
   const getKeyStatus = (letter: string): string => {
     if (guesses.find(guess => guess.includes(letter))) {
       if (word.includes(letter.toLowerCase())) {
@@ -90,7 +90,6 @@ export default function Game() {
   const getGuessItemStatus = (guess: string, letter: string, position: number): string => {
 
     if (word.includes(letter.toLowerCase())) {
-
       if (letter.toLowerCase() == word[position].toLowerCase()) {
         return 'correct'; // removeByIndex(guess, position).indexOf(letter)
       } else if (guess.indexOf(letter) == position) {
@@ -98,7 +97,6 @@ export default function Game() {
 
         if (pos==-1) {
           return 'has-letter';
-          
         }
         if (letter.toLowerCase() != word[pos + position + 1].toLowerCase()) {
           return 'has-letter';
@@ -143,9 +141,9 @@ export default function Game() {
 
       setTimeout(() => {
         setGuesses([...guesses, currentGuess]);
-  
+
         setIsRevealing(false);
-  
+
         if (currentGuess.toLowerCase() === word) {
           setCurrentGuess('');
           setIsGameWon(true);
@@ -153,13 +151,13 @@ export default function Game() {
           setShowFinalModal(true);
           return;
         }
-  
+
         setCurrentGuess('');
-  
-      }, REVEAL_TIME_MS); 
+
+      }, REVEAL_TIME_MS);
     } else {
       toast.error("Word not found");
-    }  
+    }
   }
 
   return (
@@ -221,7 +219,6 @@ export default function Game() {
         </div>
       </Modal>
       <ToastContainer theme="dark" />
-      
     </div>
   )
 };

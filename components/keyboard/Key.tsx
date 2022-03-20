@@ -1,4 +1,5 @@
 import { MAX_WORD_LENGTH, REVEAL_TIME_MS } from '../../constants/settings';
+import Image from 'next/image'
 
 import styles from '../../styles/Keyboard.module.scss';
 
@@ -23,7 +24,9 @@ export default function Key({ value, onClick, status, isRevealing }: Props) {
 
   return (
     <button style={stylesDelay} className={`${styles[status]} ${styles.letter}`} onClick={handleClick}>
-      {value}
+      {value != 'DELETE' && value != 'ENTER' ? (value) :
+      (<Image src={`/${value.toLowerCase()}.svg`} alt={`/${value.toLowerCase()} image`} width={10} height={10} />)
+      }
     </button>
   )
 }

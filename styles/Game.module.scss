@@ -4,9 +4,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 0 4rem;
   background-color: $back;
   height: 100vh;
+
+  @include for-big-desktop-up {
+    padding: 0 4rem;
+  }
 
   h1 {
     text-align: center;
